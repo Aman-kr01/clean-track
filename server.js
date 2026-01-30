@@ -253,15 +253,26 @@ app.get('/health', (_req, res) => {
 });
 
 ensureStorage().then(() => {
-  app.listen(RAILWAY_PORT, '0.0.0.0', () => {
+  const server = app.listen(PORT, '0.0.0.0', () => {
     console.log(`✅ Server started successfully!`);
     console.log(`🌐 Environment: ${NODE_ENV}`);
-    console.log(`🚀 Port: ${RAILWAY_PORT}`);
+    console.log(`🚀 Port: ${PORT}`);
     console.log(`👤 Admin user: ${ADMIN_USER}`);
     console.log(`📊 Health check: /health`);
+    console.log(`🌍 Local: http://localhost:${PORT}`);
     
     if (process.env.RAILWAY_PUBLIC_DOMAIN) {
       console.log(`🌍 Railway URL: https://${process.env.RAILWAY_PUBLIC_DOMAIN}`);
+    }
+    if (process.env.RAILWAY_ENVIRONMENT) {
+      console.log(`🚂 Railway Environment: ${process.env.RAILWAY_ENVIRONMENT}`);
+    }
+  });
+
+  server.on('error', (error) => {
+    console.error('❌ Server error:', error);
+    if (error.code === 'EADDRINUSE') {
+      console.log(`Port ${PORT} is already in use`);
     }
   });
 }).catch(error => {
