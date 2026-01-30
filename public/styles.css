@@ -22,6 +22,9 @@ body {
     radial-gradient(1000px 600px at 90% 0%, rgba(46, 164, 79, 0.10), transparent),
     var(--bg);
   color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
@@ -452,7 +455,7 @@ textarea { min-height: 110px; resize: vertical; }
 }
 
 .site-footer {
-  margin-top: 28px;
+  margin-top: auto;
   background: #1f2933;
   color: rgba(255, 255, 255, 0.92);
 }
