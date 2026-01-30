@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Virasaat - Environment & Cleanliness</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M9 3h6m-8 4h10m-9 0 1 16h6l1-16M10 7v13m4-13v13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="brand-name">Clean Track</div>
+      </div>
+      <div>
+        <a data-nav href="index.html">Home</a>
+        <a data-nav href="report.html">Report</a>
+        <a data-nav href="map.html">Map</a>
+        <a data-nav href="admin.html">Admin</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-banner">
+    <div class="container hero-banner-inner">
+      <h1 class="hero-title">Keep Our Environment Clean</h1>
+      <p class="hero-subtitle">Report garbage and environmental issues in your area to help maintain a cleaner community</p>
+      <div class="actions hero-actions">
+        <a class="btn primary" href="report.html">Report Garbage</a>
+        <a class="btn" href="map.html">View Map</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container page-section">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon" aria-hidden="true">!</div>
+        <div class="stat-value" id="statTotal">0</div>
+        <div class="stat-label">Total Reports</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" aria-hidden="true">✓</div>
+        <div class="stat-value" id="statResolved">0</div>
+        <div class="stat-label">Resolved</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" aria-hidden="true">⏱</div>
+        <div class="stat-value" id="statPending">0</div>
+        <div class="stat-label">Pending</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container page-section">
+    <h2 class="section-title">How It Works</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">📷</div>
+        <div class="feature-title">1. Take Photo</div>
+        <div class="feature-text">Capture an image of the garbage or environmental issue</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">📍</div>
+        <div class="feature-title">2. Add Location</div>
+        <div class="feature-text">GPS automatically captures your location or you can manually set it</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">🛰</div>
+        <div class="feature-title">3. Submit Report</div>
+        <div class="feature-text">Send your report and track its status on the map</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container page-section">
+    <h2 class="section-title">Recent Reports</h2>
+    <div class="recent-grid" id="recentReports"></div>
+    <div class="small" id="homeStatus"></div>
+  </div>
+
+  <div class="container page-section" id="awareness">
+    <h2 class="section-title">Awareness Tips</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">♻</div>
+        <div class="feature-title">Segregate Waste</div>
+        <div class="feature-text">Separate wet and dry waste to improve recycling and reduce landfill load.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">🚯</div>
+        <div class="feature-title">Don’t Litter</div>
+        <div class="feature-text">Use bins and report dumping spots to keep streets and public areas clean.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">🌿</div>
+        <div class="feature-title">Reduce Plastic</div>
+        <div class="feature-text">Prefer reusable bottles/bags and avoid single-use plastic whenever possible.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-title">
+            <svg class="footer-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 22s7-4.5 7-12a7 7 0 1 0-14 0c0 7.5 7 12 7 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            About
+          </div>
+          <p class="footer-text">This platform helps citizens report garbage and environmental issues to promote a cleaner and healthier Bihar.</p>
+        </div>
+
+        <div>
+          <div class="footer-title">
+            <svg class="footer-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M22 16.9v2.2a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 3.1 4.2 2 2 0 0 1 5.1 2h2.2a2 2 0 0 1 2 1.72c.12.86.31 1.7.57 2.5a2 2 0 0 1-.45 2.11L8.5 9.5a16 16 0 0 0 6 6l1.17-1.17a2 2 0 0 1 2.11-.45c.8.26 1.64.45 2.5.57A2 2 0 0 1 22 16.9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Contact
+          </div>
+          <div class="footer-links">
+            <div class="footer-text">Email – cleantrack@gmail.com</div>
+            <div class="footer-text">Helpline – 1800-XXX-XXXX</div>
+            <div class="footer-text">Location – Bihar, India</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-title">
+            <svg class="footer-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10Z" stroke="currentColor" stroke-width="2"/>
+              <path d="M8 13s1.5 2 4 2 4-2 4-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M9 9h.01M15 9h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            Message
+          </div>
+          <div class="footer-quote">A clean environment is not a luxury, it is a responsibility.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">© 2026 Clean &amp; Green India | Social Good Project.</div>
+    </div>
+  </footer>
+
+  <script src="_layout.js"></script>
+  <script src="home.js"></script>
+</body>
+</html>

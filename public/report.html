@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Report - Virasaat Cleanliness</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+</head>
+<body>
+  <div class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M9 3h6m-8 4h10m-9 0 1 16h6l1-16M10 7v13m4-13v13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="brand-name">Clean Track</div>
+      </div>
+      <div>
+        <a data-nav href="index.html">Home</a>
+        <a data-nav href="report.html">Report</a>
+        <a data-nav href="map.html">Map</a>
+        <a data-nav href="admin.html">Admin</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container hero">
+    <div class="card">
+      <h2>Report Garbage</h2>
+      <p>Upload a photo and capture your GPS location.</p>
+
+      <form id="reportForm" class="form">
+        <div class="field">
+          <label for="image">Image</label>
+          <input id="image" name="image" type="file" accept="image/*" required />
+          <div class="small">Max 8MB. JPG/PNG recommended.</div>
+        </div>
+
+        <div class="field">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" placeholder="Describe the issue (optional)"></textarea>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label for="lat">Latitude</label>
+            <input id="lat" name="lat" type="number" step="any" placeholder="e.g. 28.6139" required />
+          </div>
+          <div class="field">
+            <label for="lng">Longitude</label>
+            <input id="lng" name="lng" type="number" step="any" placeholder="e.g. 77.2090" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Location Preview</label>
+          <div id="reportMap" class="mini-map"></div>
+          <div class="small">Tip: click “Get Current Location” or type latitude/longitude to update the map.</div>
+        </div>
+
+        <div class="actions">
+          <button class="btn" type="button" id="getLocationBtn">Get Current Location</button>
+          <button class="btn primary" type="submit">Submit Report</button>
+          <a class="btn" href="map.html">View Map</a>
+        </div>
+
+        <div class="small" id="status"></div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-title">
+            <svg class="footer-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 22s7-4.5 7-12a7 7 0 1 0-14 0c0 7.5 7 12 7 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            About
+          </div>
+          <p class="footer-text">This platform helps citizens report garbage and environmental issues to promote a cleaner and healthier Bihar.</p>
+        </div>
+
+        <div>
+          <div class="footer-title">
+            <svg class="footer-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M22 16.9v2.2a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 3.1 4.2 2 2 0 0 1 5.1 2h2.2a2 2 0 0 1 2 1.72c.12.86.31 1.7.57 2.5a2 2 0 0 1-.45 2.11L8.5 9.5a16 16 0 0 0 6 6l1.17-1.17a2 2 0 0 1 2.11-.45c.8.26 1.64.45 2.5.57A2 2 0 0 1 22 16.9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Contact
+          </div>
+          <div class="footer-links">
+            <div class="footer-text">Email – cleantrack@gmail.com</div>
+            <div class="footer-text">Helpline – 1800-XXX-XXXX</div>
+            <div class="footer-text">Location – Bihar, India</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-title">
+            <svg class="footer-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10Z" stroke="currentColor" stroke-width="2"/>
+              <path d="M8 13s1.5 2 4 2 4-2 4-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M9 9h.01M15 9h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            Message
+          </div>
+          <div class="footer-quote">A clean environment is not a luxury, it is a responsibility.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">© 2026 Clean &amp; Green India | Social Good Project.</div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="_layout.js"></script>
+  <script src="report.js"></script>
+</body>
+</html>
