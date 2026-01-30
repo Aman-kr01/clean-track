@@ -37,8 +37,22 @@ function initMiniMap() {
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
-    attribution: '&copy; OpenStreetMap contributors'
+    attribution: '&copy; OpenStreetMap contributors',
+    crossOrigin: true
   }).addTo(reportMap);
+
+  // Handle tile loading errors for mini map
+  reportMap.on('tileerror', function(error) {
+    console.warn('Mini map tile loading error:', error);
+    if (!window.miniMapFallback) {
+      window.miniMapFallback = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        maxZoom: 19,
+        attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+        crossOrigin: true
+      });
+      window.miniMapFallback.addTo(reportMap);
+    }
+  });
 
   updateMapFromInputs();
 }

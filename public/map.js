@@ -5,8 +5,23 @@ map.setView(defaultCenter, 5);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
-  attribution: '&copy; OpenStreetMap contributors'
+  attribution: '&copy; OpenStreetMap contributors',
+  crossOrigin: true
 }).addTo(map);
+
+// Handle tile loading errors
+map.on('tileerror', function(error) {
+  console.warn('Tile loading error:', error);
+  // Fallback to a different tile provider if needed
+  if (!window.fallbackTileLayer) {
+    window.fallbackTileLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+      crossOrigin: true
+    });
+    window.fallbackTileLayer.addTo(map);
+  }
+});
 
 function escapeHtml(str) {
   return String(str || '')
