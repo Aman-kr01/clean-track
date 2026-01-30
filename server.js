@@ -5,7 +5,6 @@ const fsp = fs.promises;
 const cors = require('cors');
 const multer = require('multer');
 const crypto = require('crypto');
-const helmet = require('helmet');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -112,23 +111,6 @@ const upload = multer({
     fileSize: 8 * 1024 * 1024
   }
 });
-
-// Security middleware
-app.use(helmet({
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'"],
-      styleSrc: ["'self'", "'unsafe-inline'", "https://unpkg.com"],
-      scriptSrc: ["'self'", "https://unpkg.com"],
-      imgSrc: ["'self'", "data:", "blob:", "https:", "http:"],
-      connectSrc: ["'self'"],
-      fontSrc: ["'self'"],
-      objectSrc: ["'none'"],
-      mediaSrc: ["'self'"],
-      frameSrc: ["'none'"],
-    },
-  },
-}));
 
 // CORS configuration
 const corsOptions = {
