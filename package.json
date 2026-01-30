@@ -6,7 +6,11 @@
   "type": "commonjs",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "railway": "node server.js"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   },
   "dependencies": {
     "cors": "^2.8.5",

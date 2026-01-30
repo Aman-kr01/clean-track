@@ -11,10 +11,17 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
+// Railway-specific port handling
+const RAILWAY_PORT = process.env.RAILWAY_PUBLIC_DOMAIN ? process.env.PORT || 3000 : PORT;
+
 const ADMIN_USER = process.env.ADMIN_USER || 'admin';
 const ADMIN_PASS = process.env.ADMIN_PASS || 'admin123';
 const ADMIN_COOKIE = 'admin_session';
 const SESSION_SECRET = process.env.SESSION_SECRET || crypto.randomBytes(32).toString('hex');
+
+console.log('Starting Virasaat Cleanliness App...');
+console.log(`Environment: ${NODE_ENV}`);
+console.log(`Port: ${RAILWAY_PORT}`);
 
 const adminSessions = new Map();
 
@@ -264,12 +271,18 @@ app.get('/health', (_req, res) => {
 });
 
 ensureStorage().then(() => {
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running on port ${PORT}`);
-    console.log(`Environment: ${NODE_ENV}`);
-    console.log(`Admin user: ${ADMIN_USER}`);
+  app.listen(RAILWAY_PORT, '0.0.0.0', () => {
+    console.log(`✅ Server started successfully!`);
+    console.log(`🌐 Environment: ${NODE_ENV}`);
+    console.log(`🚀 Port: ${RAILWAY_PORT}`);
+    console.log(`👤 Admin user: ${ADMIN_USER}`);
+    console.log(`📊 Health check: /health`);
+    
+    if (process.env.RAILWAY_PUBLIC_DOMAIN) {
+      console.log(`🌍 Railway URL: https://${process.env.RAILWAY_PUBLIC_DOMAIN}`);
+    }
   });
 }).catch(error => {
-  console.error('Failed to start server:', error);
+  console.error('❌ Failed to start server:', error);
   process.exit(1);
 });
