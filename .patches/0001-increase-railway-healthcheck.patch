@@ -1,0 +1,18 @@
+*** Begin Patch
+*** Update File: railway.json
+@@
+-  "deploy": {
+-    "startCommand": "node server.js",
+-    "healthcheckPath": "/health",
+-    "healthcheckTimeout": 100,
+-    "restartPolicyType": "ON_FAILURE",
+-    "restartPolicyMaxRetries": 10
+-  }
++  "deploy": {
++    "startCommand": "node server.js",
++    "healthcheckPath": "/health",
++    "healthcheckTimeout": 5000,
++    "restartPolicyType": "ON_FAILURE",
++    "restartPolicyMaxRetries": 10
++  }
+*** End Patch

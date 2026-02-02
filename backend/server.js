@@ -73,6 +73,7 @@ function requireAdmin(req, res, next) {
 const DATA_DIR = path.join(__dirname, 'data');
 const REPORTS_FILE = path.join(DATA_DIR, 'reports.json');
 const UPLOADS_DIR = path.join(__dirname, 'uploads');
+const FRONTEND_DIR = path.join(__dirname, '..', 'frontend');
 
 async function ensureStorage() {
   await fsp.mkdir(DATA_DIR, { recursive: true });
@@ -127,7 +128,7 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 app.use('/uploads', express.static(UPLOADS_DIR));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(FRONTEND_DIR));
 
 app.get('/api/admin/me', (req, res) => {
   res.json({ authenticated: isAdmin(req) });
@@ -234,7 +235,7 @@ app.delete('/api/reports/:id', requireAdmin, async (req, res) => {
 });
 
 app.get('/', (_req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(FRONTEND_DIR, 'index.html'));
 });
 
 // Global error handler
